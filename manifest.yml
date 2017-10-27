@@ -1,0 +1,18 @@
+- name: scphelloworldrouter
+  host: scphelloworldrouter-XXXXX
+  path: src/main/approuter
+  buildpack: nodejs_buildpack
+  memory: 128M
+  env:
+    XSAPPNAME: scphelloworldrouter-XXXXX
+    TENANT_HOST_PATTERN: "^(.*)-scphelloworldrouter-XXXXX.cfapps.eu10.hana.ondemand.com"
+    destinations: >
+      [
+        {
+          "name":"scphelloworld-destination", 
+          "url":"https://scphelloworld-XXXXX.cfapps.eu10.hana.ondemand.com",
+          "forwardAuthToken": true
+         }
+      ]
+  services:
+    - scphelloworld-uaa
